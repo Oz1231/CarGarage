@@ -15,4 +15,9 @@ public class Motorcycle extends Vehicle{
         System.out.println(getName() + " 2 wheels repaired");
 
     }
+
+    public static Motorcycle create(String model) {
+        return new Motorcycle(model);
+    }
+
 }

@@ -1,18 +1,45 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-    public class DB {
+public class DB {
 
-        static List<Vehicle> vehicles = new ArrayList<>();
+    static HashMap<Integer, Queue<Vehicle>> vehicleQueues = new HashMap<>();
 
-        public static void addVehicle(Vehicle vehicle) {
-            vehicles.add(vehicle);
+    static {
+        vehicleQueues.put(1, new LinkedList<>());
+        vehicleQueues.put(2, new LinkedList<>());
+        vehicleQueues.put(3, new LinkedList<>());
+    }
+
+    public static void build(int type, String model) {
+        Vehicle vehicle = null;
+
+        switch (type) {
+            case 1:
+                vehicle = Motorcycle.create(model);
+                break;
+            case 2:
+                vehicle = Car.create(model);
+                break;
+            case 3:
+                vehicle = Truck.create(model);
+                break;
+            default:
+                System.out.println("Invalid vehicle type.");
+                return;
         }
 
-        public static List<Vehicle> getVehicles() {
-            return vehicles;
+        vehicleQueues.get(type).offer(vehicle);
+    }
+
+    public static List<Vehicle> convert() {
+        List<Vehicle> allVehicles = new ArrayList<>();
+
+        for (Queue<Vehicle> queue : vehicleQueues.values()) {
+            allVehicles.addAll(queue);
         }
+
+        return allVehicles;
     }
 
 
-
+}

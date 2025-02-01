@@ -16,4 +16,8 @@ public class Car extends Vehicle{
         System.out.println(getName() + " 4 wheels repaired");
 
     }
+
+    public static Car create(String model) {
+        return new Car(model);
+    }
 }

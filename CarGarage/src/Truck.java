@@ -15,4 +15,10 @@ public class Truck extends Vehicle{
         System.out.println(getName() + " 4 wheels and engine repaired");
 
     }
+
+
+    public static Truck create(String model) {
+        return new Truck(model);
+    }
+
 }

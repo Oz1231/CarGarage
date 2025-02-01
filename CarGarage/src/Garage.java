@@ -3,13 +3,14 @@ import java.util.List;
 public class Garage {
 
     private Protocol_Garage protocolGarage;
+    private List<Vehicle> vehicles;
 
-    public Garage(Protocol_Garage protocolGarage) {
+    public Garage(Protocol_Garage protocolGarage, List<Vehicle> vehicles) {
         this.protocolGarage = protocolGarage;
+        this.vehicles = vehicles;
     }
 
     public void startRepairing() {
-        List<Vehicle> vehicles = DB.getVehicles();
 
         for (Vehicle vehicle : vehicles) {
             int fixTime = vehicle.getFixTime();
